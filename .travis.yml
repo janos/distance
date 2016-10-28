@@ -1,0 +1,13 @@
+language: go
+
+go:
+  - 1.7
+
+install:
+  - go get -v resenje.org/distance
+
+before_script:
+  - go vet -v resenje.org/distance/...
+
+script:
+  - go test -v resenje.org/distance/...

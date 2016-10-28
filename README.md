@@ -1,4 +1,7 @@
-# Distance [![GoDoc](https://godoc.org/resenje.org/distance?status.svg)](https://godoc.org/resenje.org/distance)
+# Distance
+
+[![GoDoc](https://godoc.org/resenje.org/distance?status.svg)](https://godoc.org/resenje.org/distance)
+[![Build Status](https://travis-ci.org/janos/distance.svg?branch=master)](https://travis-ci.org/janos/distance)
 
 Distance is a Go package with functions to calculate Hamming distance between two byte slices or unsigned integers, population (1 bite) count of byte slices or unsigned integers, and to XOR two byte slices.
 
