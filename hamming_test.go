@@ -176,10 +176,14 @@ func TestPopCountUint64(t *testing.T) {
 	}
 }
 
+var result uint64
+
 func BenchmarkPopCountUint64(b *testing.B) {
+	var c uint64
 	for i := 0; i < b.N; i++ {
-		PopCountUint64(0x123456789ABCDEF)
+		c = PopCountUint64(0x123456789ABCDEF)
 	}
+	result = c
 }
 
 func BenchmarkPopCount8Bytes(b *testing.B) {
@@ -188,11 +192,15 @@ func BenchmarkPopCount8Bytes(b *testing.B) {
 	if _, err := rand.Read(v); err != nil {
 		b.Fatalf("rand.Read: %s", err)
 	}
+	var c uint64
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		PopCount(v)
+		c = PopCount(v)
 	}
+	result = c
 }
+
+var xorResult []byte
 
 func BenchmarkXOR8Bytes(b *testing.B) {
 	b.StopTimer()
@@ -205,9 +213,11 @@ func BenchmarkXOR8Bytes(b *testing.B) {
 		b.Fatalf("rand.Read: %s", err)
 	}
 	b.StartTimer()
+	var r []byte
 	for i := 0; i < b.N; i++ {
-		XOR(v1, v2)
+		r = XOR(v1, v2)
 	}
+	xorResult = r
 }
 
 func BenchmarkHamming1Byte(b *testing.B) {
@@ -259,7 +269,9 @@ func benchmarkHammingBytes(b *testing.B, length int) {
 		b.Fatalf("rand.Read: %s", err)
 	}
 	b.StartTimer()
+	var c uint64
 	for i := 0; i < b.N; i++ {
-		Hamming(v1, v2)
+		c = Hamming(v1, v2)
 	}
+	result = c
 }
